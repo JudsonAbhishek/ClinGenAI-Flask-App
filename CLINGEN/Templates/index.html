@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ClinGenAI – Medical Reasoning System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="top-bar">
+    <h1>ClinGenAI</h1>
+    <span>AI-Assisted Clinical Reasoning</span>
+</header>
+
+<main class="main-container">
+    <section class="card">
+        <h2>Patient Symptom Analysis</h2>
+        <p class="subtitle">Enter clinical symptoms for AI-based medical consensus</p>
+
+        <!-- ✅ Correct form -->
+        <form method="POST" onsubmit="showLoading()">
+            <textarea name="symptoms"
+                      placeholder="Example: Fever for 3 days, sore throat, body aches..."
+                      required></textarea>
+
+            <button type="submit">Run Medical Analysis</button>
+        </form>
+    </section>
+</main>
+
+<!-- ✅ Loading Overlay -->
+<div id="loading-box" class="loading hidden">
+    <div class="spinner"></div>
+    <p>
+        Fetching medical consensus from multiple AI models…<br>
+        Please wait
+    </p>
+</div>
+
+<footer>
+    <p>⚠️ For academic & research purposes only. Not a medical diagnosis.</p>
+</footer>
+
+<!-- ✅ Script MUST be inside body -->
+<script>
+function showLoading() {
+    document.querySelector('.card').classList.add('blur');
+    document.getElementById('loading-box').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
